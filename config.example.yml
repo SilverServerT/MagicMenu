@@ -1,0 +1,141 @@
+# CommandManagerExtension config file
+# See https://github.com/onebeastchris/MagicMenu/blob/master/setup.md for all placeholders
+# https://github.com/onebeastchris/MagicMenu/blob/master/src/main/resources/config.yml for the default config
+
+# config version - do not change this.
+config-version: 1.0
+
+# Should emotes be shown when used to open a menu?
+show-emotes: false
+
+# If this is set to true, closing a form will return to the previous form.
+go-back: true
+
+# Debug mode: This will spam the console.
+debug: true
+
+# Define your menus here. You can have as many as you want, but practically, not more than 4 - one for each emote.
+menus:
+  # Enter the emote uuid here. Or, all for all emotes (not recommended). Take the uuid from here:
+  # https://github.com/JustTalDevelops/bedrock-emotes
+  # Alternatively, you can also not set an emote-uuid, and instead, set a command to open the menu.
+  # Setting both an emote and a command will result in both being registered - see the last example at the bottom.
+  # You can also set it to "all", this would mean that the menu would open for all emotes. You cannot have multiple "all" menus.
+  - emote-uuid: d7519b5a-45ec-4d27-997c-89d402c6b57f
+    # Enter the allowed users here. If you want to allow all users, remove "allowed-users" entirely
+    # if someone isn't allowed to use this menu, they will just emote normally.
+    #allowed-users:
+    #  - onebeastofchris
+    #  - someotheraccount
+    # Enter the title/description of the menu here; description is optional.
+    forms:
+      - form-title: "SilverServer Menu"
+        form-description: "Wardrobe and other settings"
+
+        # Configure the buttons here.
+        buttons:
+           - name: "Use Offhand"
+             commands:
+               - command-name: "geyser offhand"
+                 run: "geyser offhand"
+
+          # name of the button. Here, we define a command, so clicking the button will run the command.
+         
+           - name: "Put current cords in chat"
+             commands:
+               - command-name: "Cords in chat"
+                 run: "me I am here: %x% , %y% , %z%"
+          # Similar as above - but with
+          # 1. a placeholder in the name, and
+          # 2. allowed users for the button! (xbox usernames, no prefix)
+          # Here: "%username%" is replaced with the java username of the player
+          #- name: "Give %username% an apple!"
+          # allowed-users:
+          #    - onebeastofchris
+          #    - totallyavalidxboxusername
+          #  commands:
+          #    - command-name: "Give %username% an apple!"
+          #      run: "give %username% apple 1"
+
+          # You can also open a menu with more commands
+          # buttons can have an image next to them
+          
+             
+           - name: "Geyser Commands"
+             image-url: "https://avatars.githubusercontent.com/u/52673035?s=200&v=4"
+             forms:
+               - form-title: "Stats/advancements"
+                 form-description: "Check some stats and advancements!"
+                 buttons:
+                   - name: "statistics"
+                     commands:
+                       - command-name: "geyser statistics"
+                         run: "geyser statistics"
+                   - name: "tooltips"
+                     commands:
+                       - command-name: "geyser tooltips"
+                         run: "geyser tooltips"
+                   - name: "advancements"
+                     commands:
+                       - command-name: "geyser advancements"
+                         run: "geyser advancements"             
+           - name: "Wardrobe"
+             image-url: "https://raw.githubusercontent.com/SilverServerT/FabricTailor/b0ac935202e3df0993e779a037a992f5c9f183d1/img/wardrobe.jpg"
+             forms:
+               - form-title: "Wardrobe"
+                 form-description: "Enjoy your outfits!!"
+                 buttons:
+                   - name: "Reset skin to default"
+                     commands:
+                       - command-name: "Reset to default"
+                         run: "skin set player silverservernl"
+                   - name: "Casual"
+                     image-url: "https://raw.githubusercontent.com/SilverServerT/FabricTailor/b0ac935202e3df0993e779a037a992f5c9f183d1/img/wardrobe.jpg"
+                     commands:
+                       - command-name: "Casual outfit nr1"
+                         run: "skin set player zeusswalle"
+                   - name: "Casual 2"
+                     image-url: "https://raw.githubusercontent.com/SilverServerT/FabricTailor/b0ac935202e3df0993e779a037a992f5c9f183d1/img/wardrobe.jpg"
+                     commands:
+                       - command-name: "Casual outfit nr2"
+                         run: "skin set player GC0NEL"
+                   - name: "Party suit"
+                     image-url: "https://raw.githubusercontent.com/SilverServerT/FabricTailor/b0ac935202e3df0993e779a037a992f5c9f183d1/img/wardrobe.jpg"
+                     commands:
+                       - command-name: "Party Suit"
+                         run: "skin set player noruskinm"
+                   - name: "Other 1"
+                     image-url: "https://raw.githubusercontent.com/SilverServerT/FabricTailor/b0ac935202e3df0993e779a037a992f5c9f183d1/img/wardrobe.jpg"
+                     commands:
+                       - command-name: "Other suit"
+                         run: "skin set player C0RG4N"
+                   - name: "Other 2"
+                     image-url: "https://raw.githubusercontent.com/SilverServerT/FabricTailor/b0ac935202e3df0993e779a037a992f5c9f183d1/img/wardrobe.jpg"
+                     commands:
+                       - command-name: "Other suit 2"
+                         run: "skin set player tcutshaw"
+                        #allowed-users:
+                        # - onebeastchris
+                        #  - onebeastofchris
+                        #  - someotheraccount
+
+  # You can also run a command directly, without opening a menu.
+  # note here: we set a specific emote uuid (from https://github.com/JustTalDevelops/bedrock-emotes), it will override the "all" menu.
+  - emote-uuid: ce5c0300-7f03-455d-aaf1-352e4927b54d
+    commands:
+     - command-name: "geyser offhand"
+       run: "geyser offhand"
+  - emote-uuid: 42fde774-37d4-4422-b374-89ff13a6535a
+    commands:
+     - command-name: "Reset skin to %username%"
+       run: "skin set player silverservernl"
+      # As the command above is only accessible to onebeastofchris and someotheraccount, the command above will only run for them.
+      # The command below has no set allowed users, therefore, it will run for everyone else.
+      # One button cannot run multiple commands.
+     
+
+  # You can also open a menu with a command (/magicmenu [menu-command])
+  # The example here opens the weather menu with the command /magicmenu weather
+  # However, we also added a permission to the command, so only people with the permission "magicmenu.weather" can use it.
+  # Instead of permissions, you can define allowed-users via the bedrock username.
+
